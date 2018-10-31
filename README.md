@@ -1,4 +1,4 @@
-#DynaNode - CrossJVM Code Injection
+#DynaNode - CrossJVM Code Injection#
 
 Designed for use in RuneMate, DynaNode provides the capability to modify bytecode at runtime.
 

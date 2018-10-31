@@ -1,12 +1,12 @@
-#DynaNode - CrossJVM Code Injection
+# DynaNode - CrossJVM Code Injection
 
 Designed for use in RuneMate, DynaNode provides the capability to modify bytecode at runtime.
 
-###How does it work?
+### How does it work?
 
 It installs a java agent in the target JVM and sets up a RMI service that will receive injected classes and hot-swap them into the running environment
 
-###In the Context of Runescape
+### In the Context of Runescape
 In OldSchool RuneScape once the gamepack is loaded the class files cannot be found on the classpath AFAIK. 
 To combat this I implemented a simple CDN that serves the raw class files from the current revision.
 So by querrying: `https://updates.paratek.io/pack/class/:classname` you will receive a raw unmodifed class from the current revision.
@@ -14,13 +14,13 @@ You can the inject code into this class file with ASM using the helper functions
 and send it `AbstractTransformer#writeToBridge`. Examples of this can be found in the `impl` package of `dynalib`
 
 ### How to use it
-#####Basic Example
+##### Basic Example
 ```java
 final DynaLoader loader = new DynaLoader(VM_ID);
 loader.submitTransformer(new AbstractTransformer(...));
 loader.init();
 ```
-#####Full RuneMate Example
+##### Full RuneMate Example
 The following code will disable model rendering when the bot is paused, and enable model rendering when it's resumed
 ```java
 import com.runemate.game.api.hybrid.Environment;

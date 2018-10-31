@@ -10,8 +10,8 @@ It installs a java agent in the target JVM and sets up a RMI service that will r
 In OldSchool RuneScape once the gamepack is loaded the class files cannot be found on the classpath AFAIK. 
 To combat this I implemented a simple CDN that serves the raw class files from the current revision.
 So by querrying: `https://updates.paratek.io/pack/class/:classname` you will receive a raw unmodifed class from the current revision.
-You can the inject code into this class file with ASM using the helper functions in `AbstractTransformer` you then write it to a byte array
-and send it `AbstractTransformer#writeToBridge`. Examples of this can be found in the `impl` package of `dynalib`
+You can then inject code into this class file with ASM using the helper functions in `AbstractTransformer` you then write it to a byte array
+and send it with `AbstractTransformer#writeToBridge`. Examples of this can be found in the `impl` package of `dynalib`.
 
 ### How to use it
 ##### Basic Example

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Permissions: all-permissions
+Agent-Class: io.paratek.dynanode.rmi.server.DynaNode
+Can-Redefine-Classes: true

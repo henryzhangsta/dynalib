@@ -84,3 +84,6 @@ public class DynaBot extends LoopingBot {
     
 }
 ```
+
+#### Here is a visualization of the above code
+[Demo]: https://i.imgur.com/oGhV9xS.gifv "Demo"

@@ -111,6 +111,23 @@ public class ActionTransformer extends AbstractTransformer {
                             "(Lio/paratek/dynanode/DynaAction;)V", false));
 
                     list.add(labelNode);
+
+                    // Add a Callback for LastAction
+                    list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "getSupplier",
+                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                    list.add(new VarInsnNode(Opcodes.ILOAD, 0));
+                    list.add(new VarInsnNode(Opcodes.ILOAD, 1));
+                    list.add(new VarInsnNode(Opcodes.ILOAD, 2));
+                    list.add(new VarInsnNode(Opcodes.ILOAD, 3));
+                    list.add(new VarInsnNode(Opcodes.ALOAD, 4));
+                    list.add(new VarInsnNode(Opcodes.ALOAD, 5));
+                    list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
+                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "setLastAction",
+                            "(IIIILjava/lang/String;Ljava/lang/String;)V", false));
+
                     methodNode.instructions.insert(list);
                 }
             }

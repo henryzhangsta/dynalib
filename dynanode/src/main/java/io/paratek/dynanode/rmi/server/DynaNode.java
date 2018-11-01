@@ -7,6 +7,7 @@ import java.rmi.registry.LocateRegistry;
 public class DynaNode {
 
     public static void agentmain(String arg, final Instrumentation inst) {
+//        inst.addTransformer(new DynaTransformer());
         // Setup RMI
         try {
             LocateRegistry.getRegistry(Integer.valueOf(arg) + 20000)

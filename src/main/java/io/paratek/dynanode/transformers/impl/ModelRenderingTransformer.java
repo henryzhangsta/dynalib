@@ -10,7 +10,7 @@ public class ModelRenderingTransformer extends AbstractTransformer {
 
     @Override
     public void run() {
-        final String className = "ds"; // Replace with CDN call
+        final String className = "ds"; // Replace with CDN call Model
         try {
             final ClassNode classNode = super.getClassNode(className);
             for (Object method : classNode.methods) {

@@ -70,7 +70,6 @@ public abstract class AbstractTransformer {
         return new URL(CDN_URL + "/pack/class/" + name).openStream();
     }
 
-
     /**
      * Sets the bridge, not in constructor so we can encapsulate this
      * @param bridge

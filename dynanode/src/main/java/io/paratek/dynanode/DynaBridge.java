@@ -1,5 +1,6 @@
 package io.paratek.dynanode;
 
+import java.awt.image.BufferedImage;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -9,6 +10,14 @@ import java.rmi.RemoteException;
  * @author Parametric
  */
 public interface DynaBridge extends Remote {
+
+
+    /**
+     * Every time the game is clicked, an action is created and stored for this use
+     * @return the action we stored
+     * @throws RemoteException
+     */
+    DynaAction getLastAction() throws RemoteException;
 
 
     /**

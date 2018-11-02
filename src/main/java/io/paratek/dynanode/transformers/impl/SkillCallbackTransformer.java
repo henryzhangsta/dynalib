@@ -13,10 +13,13 @@ import java.util.ListIterator;
 
 public class SkillCallbackTransformer extends AbstractTransformer {
 
+
     @Override
     public void run() {
         final String xpOwner = "client", xpName = "kx";
         final String levelOwner = "client", levelName = "kd";
+
+        boolean hasNotified = false;
         try {
             final ClassNode classNode = super.getClassNode("client");
             if (classNode != null) {
@@ -27,7 +30,13 @@ public class SkillCallbackTransformer extends AbstractTransformer {
                         while (nodeListIterator.hasNext()) {
                             final AbstractInsnNode cur = nodeListIterator.next();
                             if (index != -1 && cur.getPrevious().getOpcode() == Opcodes.IASTORE) {
-                                Environment.getLogger().debug("Injected Skill Callback");
+
+                                if (!hasNotified) {
+                                    // The field is used in some dummy methods, only need to print it once
+                                    Environment.getLogger().debug("Injected Skill Callback");
+                                    hasNotified = true;
+                                }
+
                                 nodeListIterator.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
                                         "io/paratek/dynanode/server/DynaCallbackService",
                                         "getService",
@@ -59,11 +68,6 @@ public class SkillCallbackTransformer extends AbstractTransformer {
                         }
                     }
                 }
-                final ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-                classNode.accept(classWriter);
-                final FileOutputStream stream = new FileOutputStream(new File("C:\\Users\\Parametric\\Desktop\\rs\\client.class"));
-                stream.write(classWriter.toByteArray());
-                stream.close();
                 super.writeToBridge(classNode, "client");
             } else {
                 throw new IllegalStateException("SkillCallback Transformer Failed");

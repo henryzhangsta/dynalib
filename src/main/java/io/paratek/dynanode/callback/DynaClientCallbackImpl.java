@@ -14,7 +14,12 @@ public class DynaClientCallbackImpl extends UnicastRemoteObject implements DynaC
 
     @Override
     public void onSkillUpdate(int skillIndex, int xp, int level) {
-        Environment.getLogger().debug("CALLBACK: " + skillIndex + " -> " + xp + ", " + level);
+        Environment.getLogger().debug("Skill Update: " + skillIndex + " -> " + xp + ", " + level);
+    }
+
+    @Override
+    public void onChatBoxUpdate(int type, String sender, String clan, String message) {
+        Environment.getLogger().debug("ChatBox Update: " + type + ", " + sender + ", " + clan + ", " + message);
     }
 
     @Override

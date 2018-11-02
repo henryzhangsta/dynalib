@@ -22,6 +22,7 @@ public class DynaBot extends LoopingBot {
         this.loader.submitTransformer(new ActionTransformer());
         this.loader.submitTransformer(new EngineTransformer());
         this.loader.submitTransformer(new SkillCallbackTransformer());
+        this.loader.submitTransformer(new ChatBoxTransformer());
         this.loader.init();
         try {
             this.loader.registerCallback(new DynaClientCallbackImpl());

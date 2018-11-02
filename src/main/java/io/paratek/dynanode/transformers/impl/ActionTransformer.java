@@ -25,11 +25,11 @@ public class ActionTransformer extends AbstractTransformer {
                     final LabelNode labelNode = new LabelNode();
 
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getAction",
                             "()Lio/paratek/dynanode/DynaAction;", false));
                     list.add(new InsnNode(Opcodes.ACONST_NULL));
@@ -37,11 +37,11 @@ public class ActionTransformer extends AbstractTransformer {
 
                     // Param 1
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getAction",
                             "()Lio/paratek/dynanode/DynaAction;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
@@ -51,11 +51,11 @@ public class ActionTransformer extends AbstractTransformer {
 
                     // Param 2
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getAction",
                             "()Lio/paratek/dynanode/DynaAction;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
@@ -65,11 +65,11 @@ public class ActionTransformer extends AbstractTransformer {
 
                     // Param 3
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getAction",
                             "()Lio/paratek/dynanode/DynaAction;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
@@ -79,11 +79,11 @@ public class ActionTransformer extends AbstractTransformer {
 
                     // Param 4
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getAction",
                             "()Lio/paratek/dynanode/DynaAction;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
@@ -101,12 +101,12 @@ public class ActionTransformer extends AbstractTransformer {
 
                     // Set current action to null
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new InsnNode(Opcodes.ACONST_NULL));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "setAction",
                             "(Lio/paratek/dynanode/DynaAction;)V", false));
 
@@ -114,9 +114,9 @@ public class ActionTransformer extends AbstractTransformer {
 
                     // Add a Callback for LastAction
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new VarInsnNode(Opcodes.ILOAD, 0));
                     list.add(new VarInsnNode(Opcodes.ILOAD, 1));
                     list.add(new VarInsnNode(Opcodes.ILOAD, 2));
@@ -124,7 +124,7 @@ public class ActionTransformer extends AbstractTransformer {
                     list.add(new VarInsnNode(Opcodes.ALOAD, 4));
                     list.add(new VarInsnNode(Opcodes.ALOAD, 5));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "setLastAction",
                             "(IIIILjava/lang/String;Ljava/lang/String;)V", false));
 

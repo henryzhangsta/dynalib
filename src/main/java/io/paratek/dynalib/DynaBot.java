@@ -3,13 +3,11 @@ package io.paratek.dynalib;
 import com.runemate.game.api.hybrid.Environment;
 import com.runemate.game.api.hybrid.input.Mouse;
 import com.runemate.game.api.script.framework.LoopingBot;
-import io.paratek.dynanode.DynaAction;
 import io.paratek.dynanode.DynaBridge;
 import io.paratek.dynanode.DynaLoader;
-import io.paratek.dynanode.transformers.impl.ActionTransformer;
-import io.paratek.dynanode.transformers.impl.EngineTransformer;
-import io.paratek.dynanode.transformers.impl.ModelRenderingTransformer;
-import io.paratek.dynanode.transformers.impl.SceneRenderingTransformer;
+import io.paratek.dynanode.callback.DynaClientCallbackImpl;
+import io.paratek.dynanode.client.DynaClientCallback;
+import io.paratek.dynanode.transformers.impl.*;
 
 import java.rmi.RemoteException;
 
@@ -23,7 +21,13 @@ public class DynaBot extends LoopingBot {
         this.loader.submitTransformer(new SceneRenderingTransformer());
         this.loader.submitTransformer(new ActionTransformer());
         this.loader.submitTransformer(new EngineTransformer());
+        this.loader.submitTransformer(new SkillCallbackTransformer());
         this.loader.init();
+        try {
+            this.loader.registerCallback(new DynaClientCallbackImpl());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -32,16 +36,16 @@ public class DynaBot extends LoopingBot {
     }
 
     public void onLoop() {
-        if (this.getBridge() != null) {
-            try {
-                final DynaAction action = this.getBridge().getLastAction();
-                if (action != null) {
-                    System.out.println("LOOP " + action);
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
+//        if (this.getBridge() != null) {
+//            try {
+//                final DynaAction action = this.getBridge().getLastAction();
+//                if (action != null) {
+//                    System.out.println("LOOP " + action);
+//                }
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override

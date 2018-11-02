@@ -2,15 +2,12 @@ package io.paratek.dynanode.transformers.impl;
 
 import com.runemate.game.api.hybrid.Environment;
 import io.paratek.dynanode.transformers.AbstractTransformer;
-import jdk.internal.org.objectweb.asm.ClassWriter;
 import jdk.internal.org.objectweb.asm.Opcodes;
 import jdk.internal.org.objectweb.asm.tree.ClassNode;
 import jdk.internal.org.objectweb.asm.tree.InsnList;
 import jdk.internal.org.objectweb.asm.tree.MethodInsnNode;
 import jdk.internal.org.objectweb.asm.tree.MethodNode;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class EngineTransformer extends AbstractTransformer {
@@ -27,11 +24,11 @@ public class EngineTransformer extends AbstractTransformer {
                         // Engine Tick Delay
                         final InsnList list = new InsnList();
                         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                                "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                                "io/paratek/dynanode/server/DynaActionSupplier",
                                 "getSupplier",
-                                "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                                "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                         list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                                "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                                "io/paratek/dynanode/server/DynaActionSupplier",
                                 "sleepForTickDelay",
                                 "()V", false));
                         methodNode.instructions.insert(list);

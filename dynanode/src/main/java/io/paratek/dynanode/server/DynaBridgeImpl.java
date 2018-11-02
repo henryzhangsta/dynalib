@@ -1,10 +1,9 @@
-package io.paratek.dynanode.rmi.server;
+package io.paratek.dynanode.server;
 
 import io.paratek.dynanode.DynaAction;
 import io.paratek.dynanode.DynaBridge;
+import io.paratek.dynanode.client.DynaClientCallback;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.lang.instrument.ClassDefinition;
 import java.lang.instrument.Instrumentation;
@@ -12,6 +11,10 @@ import java.lang.instrument.UnmodifiableClassException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+/**
+ *
+ * @author Parametric
+ */
 public class DynaBridgeImpl extends UnicastRemoteObject implements DynaBridge {
 
     private final Instrumentation inst;
@@ -20,6 +23,17 @@ public class DynaBridgeImpl extends UnicastRemoteObject implements DynaBridge {
         super();
         this.inst = inst;
     }
+
+    /**
+     *
+     * @param callback
+     * @throws RemoteException
+     */
+    @Override
+    public void registerCallback(DynaClientCallback callback) throws RemoteException {
+        DynaCallbackService.getService().registerCallback(callback);
+    }
+
 
     /**
      * {@inheritDoc}

@@ -1,4 +1,4 @@
-package io.paratek.dynanode.rmi.server;
+package io.paratek.dynanode.server;
 
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;

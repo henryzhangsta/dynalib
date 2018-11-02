@@ -1,6 +1,7 @@
 package io.paratek.dynanode;
 
-import java.awt.image.BufferedImage;
+import io.paratek.dynanode.client.DynaClientCallback;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -10,6 +11,14 @@ import java.rmi.RemoteException;
  * @author Parametric
  */
 public interface DynaBridge extends Remote {
+
+
+    /**
+     * Passes a reference to our client side callback to the RMI server
+     * @param callback
+     * @throws RemoteException
+     */
+    void registerCallback(final DynaClientCallback callback) throws RemoteException;
 
 
     /**

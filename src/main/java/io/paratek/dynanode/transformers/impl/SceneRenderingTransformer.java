@@ -22,11 +22,11 @@ public class SceneRenderingTransformer extends AbstractTransformer {
 
                     final LabelNode labelNode = new LabelNode();
                     list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "getSupplier",
-                            "()Lio/paratek/dynanode/rmi/server/DynaActionSupplier;", false));
+                            "()Lio/paratek/dynanode/server/DynaActionSupplier;", false));
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                            "io/paratek/dynanode/rmi/server/DynaActionSupplier",
+                            "io/paratek/dynanode/server/DynaActionSupplier",
                             "isRenderingScene",
                             "()Z", false));
                     list.add(new JumpInsnNode(Opcodes.IFNE, labelNode));

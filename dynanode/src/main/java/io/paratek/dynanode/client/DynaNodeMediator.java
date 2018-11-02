@@ -1,4 +1,4 @@
-package io.paratek.dynanode.rmi.client;
+package io.paratek.dynanode.client;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;

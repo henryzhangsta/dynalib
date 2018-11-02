@@ -4,7 +4,8 @@ import com.sun.tools.attach.AgentInitializationException;
 import com.sun.tools.attach.AgentLoadException;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
-import io.paratek.dynanode.rmi.client.DynaNodeMediator;
+import io.paratek.dynanode.client.DynaClientCallback;
+import io.paratek.dynanode.client.DynaNodeMediator;
 import io.paratek.dynanode.transformers.AbstractTransformer;
 
 import java.io.*;
@@ -22,6 +23,18 @@ public class DynaLoader {
 
     public DynaLoader(String vid) {
         this.vid = vid;
+    }
+
+    /**
+     * Registers a Callback with the Callback Service
+     * @param callback
+     */
+    public void registerCallback(final DynaClientCallback callback) {
+        try {
+            this.getBridge().registerCallback(callback);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

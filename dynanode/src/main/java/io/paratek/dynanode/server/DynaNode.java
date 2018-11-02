@@ -1,4 +1,4 @@
-package io.paratek.dynanode.rmi.server;
+package io.paratek.dynanode.server;
 
 import java.lang.instrument.Instrumentation;
 import java.rmi.RemoteException;

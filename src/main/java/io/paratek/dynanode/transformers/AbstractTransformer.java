@@ -19,7 +19,7 @@ public abstract class AbstractTransformer {
 
     private static final String CDN_URL = "https://updates.paratek.io";
 
-    protected DynaBridge bridge;
+    private DynaBridge bridge;
 
     /**
      * Executes modification and sends them over the bridge to the DynaNode

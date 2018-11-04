@@ -29,6 +29,21 @@ public interface DynaClientCallback extends Remote, Serializable {
     void onChatBoxUpdate(int type, String sender, String clan, String message) throws RemoteException;
 
     /**
+     * Called when inventory contents change
+     * @param index the slot
+     * @param stack new stack size
+     * @param id new id
+     * @throws RemoteException
+     */
+    void onInventoryUpdate(int index, int stack, int id) throws RemoteException;
+
+    /**
+     * Called after every game tick
+     * @throws RemoteException
+     */
+    void onTick() throws RemoteException;
+
+    /**
      * Used for debugging
      * @param line
      * @throws RemoteException

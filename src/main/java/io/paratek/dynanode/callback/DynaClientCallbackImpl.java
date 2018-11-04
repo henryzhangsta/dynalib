@@ -23,6 +23,16 @@ public class DynaClientCallbackImpl extends UnicastRemoteObject implements DynaC
     }
 
     @Override
+    public void onInventoryUpdate(int index, int stack, int id) throws RemoteException {
+        Environment.getLogger().debug("Inventory Change: " + index + ", " + stack + ", " + id);
+    }
+
+    @Override
+    public void onTick() throws RemoteException {
+        System.out.println("Tick");
+    }
+
+    @Override
     public void println(String line) throws RemoteException {
         Environment.getLogger().debug("[GAME MESSAGE]: " + line);
     }

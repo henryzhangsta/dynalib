@@ -46,6 +46,34 @@ public class DynaCallbackService {
     }
 
     /**
+     *
+     * {@inheritDoc}
+     */
+    public void onInventoryUpdate(int index, int stack, int id) {
+        if (this.callback != null) {
+            try {
+                callback.onInventoryUpdate(index, stack, id);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     */
+    public void onTick() {
+        if (this.callback != null) {
+            try {
+                callback.onTick();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
      * Registers a Callback interface with the Service
      * @param callback
      */

@@ -33,45 +33,17 @@ public class ChatBoxTransformer extends AbstractTransformer {
                             "getService",
                             "()Lio/paratek/dynanode/server/DynaCallbackService;", false));
                     // just grabbing the parameters so iload1, aload2-4, load onto stack
-                    list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // type
-                    list.add(new VarInsnNode(Opcodes.ALOAD, 2)); // sender
-                    list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // message
-                    list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // clan
+                    list.add(new VarInsnNode(Opcodes.ILOAD, 0)); // type
+                    list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // sender
+                    list.add(new VarInsnNode(Opcodes.ALOAD, 2)); // message
+                    list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // clan
                     list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
                             "io/paratek/dynanode/server/DynaCallbackService",
                             "onChatBoxUpdate",
                             "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false));
                     methodNode.instructions.insert(list);
-//                    final ListIterator<AbstractInsnNode> nodeListIterator = methodNode.instructions.iterator();
-//                    while (nodeListIterator.hasNext()) {
-//                        final AbstractInsnNode cur = nodeListIterator.next();
-//                        // find the location
-//                        if (cur instanceof MethodInsnNode && ((MethodInsnNode) cur).name.equals("<init>")
-//                                && ((MethodInsnNode) cur).owner.equals(msgClass) && cur.getNext().getOpcode() == Opcodes.ASTORE) {
-//                            Environment.getLogger().debug("Injected ChatBox Callback");
-//                            nodeListIterator.next(); // want to move past the storing
-//                            nodeListIterator.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-//                                    "io/paratek/dynanode/server/DynaCallbackService",
-//                                    "getService",
-//                                    "()Lio/paratek/dynanode/server/DynaCallbackService;", false));
-//                            // just grabbing the parameters so iload1, aload2-4, load onto stack
-//                            nodeListIterator.add(new VarInsnNode(Opcodes.ILOAD, 1)); // type
-//                            nodeListIterator.add(new VarInsnNode(Opcodes.ALOAD, 2)); // sender
-//                            nodeListIterator.add(new VarInsnNode(Opcodes.ALOAD, 3)); // message
-//                            nodeListIterator.add(new VarInsnNode(Opcodes.ALOAD, 4)); // clan
-//                            nodeListIterator.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-//                                    "io/paratek/dynanode/server/DynaCallbackService",
-//                                    "onChatBoxUpdate",
-//                                    "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", false));
-//                        }
-//                    }
                 }
             }
-            final ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-            container.accept(classWriter);
-            final FileOutputStream stream = new FileOutputStream(new File("C:\\Users\\Parametric\\Desktop\\rs\\co.class"));
-            stream.write(classWriter.toByteArray());
-            stream.close();
             super.writeToBridge(container, msgContainer);
         } catch (IOException e) {
             e.printStackTrace();

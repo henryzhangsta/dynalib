@@ -6,7 +6,6 @@ import com.runemate.game.api.script.framework.LoopingBot;
 import io.paratek.dynanode.DynaBridge;
 import io.paratek.dynanode.DynaLoader;
 import io.paratek.dynanode.callback.DynaClientCallbackImpl;
-import io.paratek.dynanode.client.DynaClientCallback;
 import io.paratek.dynanode.transformers.impl.*;
 
 import java.rmi.RemoteException;
@@ -21,7 +20,7 @@ public class DynaBot extends LoopingBot {
         this.loader.submitTransformer(new SceneRenderingTransformer());
         this.loader.submitTransformer(new ActionTransformer());
         this.loader.submitTransformer(new EngineTransformer());
-        this.loader.submitTransformer(new SkillCallbackTransformer());
+        this.loader.submitTransformer(new ClientTransformer());
         this.loader.submitTransformer(new ChatBoxTransformer());
         this.loader.init();
         try {

@@ -46,6 +46,7 @@ public class DynaActionSupplier {
 
     public void sleepForTickDelay() {
         try {
+            DynaCallbackService.getService().onTick();
             Thread.sleep(this.tickDelay);
         } catch (InterruptedException e) {
             e.printStackTrace();

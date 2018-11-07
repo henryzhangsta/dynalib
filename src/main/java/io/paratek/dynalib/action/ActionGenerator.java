@@ -93,12 +93,24 @@ public class ActionGenerator {
                 }
             }
         }
-        final Coordinate c = object.getPosition(Region.getBase());
+        final Coordinate region = Region.getBase();
+        final Coordinate c = object.getPosition();
+        int regionX = c.getX() - region.getX();
+        int regionY = c.getY() - region.getY();
         final Area a = object.getArea();
-        int x = (int) (c.getX() - Math.floor(((Area.Rectangular) a).getHeight() / 2)); // yes height/x
-        int y = (int) (c.getY() - Math.floor(((Area.Rectangular) a).getWidth() / 2)); // yes width/y
-//        return create(x, y, )
-        return null;
+        int x = (int) (regionX - Math.floor(((Area.Rectangular) a).getHeight() / 2)); // yes height/x
+        int y = (int) (regionY - Math.floor(((Area.Rectangular) a).getWidth() / 2)); // yes width/y
+        return create(x, y, op, object.getId());
+    }
+
+    public static long calculateUID(final GameObject gameObject) {
+        final Coordinate region = Region.getBase();
+        final Coordinate c = gameObject.getPosition();
+        int regionX = c.getX() - region.getX();
+        int regionY = c.getY() - region.getY();
+        int type = gameObject.getType().ordinal();
+        int id = gameObject.getId();
+        return (regionX & 0x7F) | (regionY & 0x7F) << 7 | (type & 0x3) << 14 | (id  & 0xFFFFFFFFL) << 17;
     }
 
 }

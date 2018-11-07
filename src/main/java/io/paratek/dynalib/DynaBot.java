@@ -1,14 +1,24 @@
 package io.paratek.dynalib;
 
 import com.runemate.game.api.hybrid.Environment;
+import com.runemate.game.api.hybrid.entities.GameObject;
+import com.runemate.game.api.hybrid.entities.Npc;
 import com.runemate.game.api.hybrid.input.Mouse;
+import com.runemate.game.api.hybrid.location.Coordinate;
+import com.runemate.game.api.hybrid.queries.results.LocatableEntityQueryResults;
+import com.runemate.game.api.hybrid.region.GameObjects;
+import com.runemate.game.api.hybrid.region.Npcs;
+import com.runemate.game.api.hybrid.region.Region;
 import com.runemate.game.api.script.framework.LoopingBot;
+import io.paratek.dynalib.action.ActionGenerator;
 import io.paratek.dynanode.DynaBridge;
 import io.paratek.dynanode.DynaLoader;
 import io.paratek.dynanode.callback.DynaClientCallbackImpl;
 import io.paratek.dynanode.transformers.impl.*;
 
 import java.rmi.RemoteException;
+import java.util.Iterator;
+import java.util.List;
 
 public class DynaBot extends LoopingBot {
 
@@ -36,6 +46,20 @@ public class DynaBot extends LoopingBot {
     }
 
     public void onLoop() {
+        final LocatableEntityQueryResults<Npc> npcs = Npcs.getLoaded();
+        for (int i = 0; i < npcs.size(); i++) {
+            final Npc n = npcs.get(i);
+            System.out.println(i  + " -> " + n);
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
 //        if (this.getBridge() != null) {
 //            try {
 //                final DynaAction action = this.getBridge().getLastAction();

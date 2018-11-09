@@ -49,10 +49,10 @@ public class DynaCallbackService {
      *
      * {@inheritDoc}
      */
-    public void onInventoryUpdate(int index, int stack, int id) {
+    public void onInventoryUpdate(int type, int index, int id, int stack) {
         if (this.callback != null) {
             try {
-                callback.onInventoryUpdate(index, stack, id);
+                callback.onInventoryUpdate(type, index, id, stack);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

@@ -32,6 +32,7 @@ public class DynaBot extends LoopingBot {
         this.loader.submitTransformer(new EngineTransformer());
         this.loader.submitTransformer(new ClientTransformer());
         this.loader.submitTransformer(new ChatBoxTransformer());
+        this.loader.submitTransformer(new ItemNodeTransformer());
         this.loader.init();
         try {
             this.loader.registerCallback(new DynaClientCallbackImpl());
@@ -46,20 +47,6 @@ public class DynaBot extends LoopingBot {
     }
 
     public void onLoop() {
-        final LocatableEntityQueryResults<Npc> npcs = Npcs.getLoaded();
-        for (int i = 0; i < npcs.size(); i++) {
-            final Npc n = npcs.get(i);
-            System.out.println(i  + " -> " + n);
-        }
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
 //        if (this.getBridge() != null) {
 //            try {
 //                final DynaAction action = this.getBridge().getLastAction();

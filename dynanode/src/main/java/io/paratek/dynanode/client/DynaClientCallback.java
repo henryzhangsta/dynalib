@@ -33,9 +33,10 @@ public interface DynaClientCallback extends Remote, Serializable {
      * @param index the slot
      * @param stack new stack size
      * @param id new id
+     * @param type type
      * @throws RemoteException
      */
-    void onInventoryUpdate(int index, int stack, int id) throws RemoteException;
+    void onInventoryUpdate(int type, int index, int id, int stack) throws RemoteException;
 
     /**
      * Called after every game tick

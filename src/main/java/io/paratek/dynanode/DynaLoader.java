@@ -1,5 +1,6 @@
 package io.paratek.dynanode;
 
+import com.runemate.game.api.hybrid.Environment;
 import com.sun.tools.attach.AgentInitializationException;
 import com.sun.tools.attach.AgentLoadException;
 import com.sun.tools.attach.AttachNotSupportedException;
@@ -59,22 +60,26 @@ public class DynaLoader {
      */
     public boolean init() {
         try {
-            this.initRegistry(Integer.valueOf(this.vid) + 20000);
-            final File tmp;
-            if ((tmp = this.buildTempAgent()) != null) {
-                VirtualMachine vm = VirtualMachine.attach(this.vid);
-                if (!vm.getSystemProperties().contains("dyna.agent.installed")) {
-                    vm.loadAgent(tmp.getPath(), this.vid);
-                }
-                bridge = DynaNodeMediator.getBridge(this.vid);
-                // Order is funny for a reason, we don't want to double inject, but we can't inject before loading agent
-                if (!vm.getSystemProperties().contains("dyna.agent.installed")) {
-                    for (AbstractTransformer t : this.transformers) {
-                        t.setBridge(this.bridge);
-                        t.run();
+            // Check if there isn't an DynaNode already loaded
+            if (this.initRegistry(Integer.valueOf(this.vid) + 20000)) {
+                final File tmp;
+                if ((tmp = this.buildTempAgent()) != null) {
+                    VirtualMachine vm = VirtualMachine.attach(this.vid);
+                    if (!vm.getSystemProperties().contains("dyna.agent.installed")) {
+                        vm.loadAgent(tmp.getPath(), this.vid);
                     }
+                    bridge = DynaNodeMediator.getBridge(this.vid);
+                    // Order is funny for a reason, we don't want to double inject, but we can't inject before loading agent
+                    if (!vm.getSystemProperties().contains("dyna.agent.installed")) {
+                        for (AbstractTransformer t : this.transformers) {
+                            t.setBridge(this.bridge);
+                            t.run();
+                        }
+                    }
+                    return true;
                 }
-                return true;
+            } else {
+                Environment.getLogger().debug("DynaNode is already loaded!");
             }
         } catch (AttachNotSupportedException | IOException | AgentLoadException | AgentInitializationException e) {
             e.printStackTrace();
